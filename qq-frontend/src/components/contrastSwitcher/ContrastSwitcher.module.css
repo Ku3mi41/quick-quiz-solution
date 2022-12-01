@@ -1,0 +1,53 @@
+.switcher {
+  display: flex;
+  position: fixed;
+  right: var(--spacing);
+  top: var(--spacing);
+  width: auto;
+  padding: 0.55rem;
+  border-radius: 2rem;
+  box-shadow: var(--card-box-shadow);
+  line-height: 1;
+  justify-content: end;
+  --background-color: var(--contrast);
+  --border-color: var(--contrast);
+  --color: var(--contrast-inverse);
+}
+
+.switcher:is([aria-current],:hover,:active,:focus) {
+  --background-color: var(--contrast-hover);
+  --border-color: var(--contrast-hover);
+  --color: var(--contrast-inverse);
+}
+
+.switcher i {
+  display: block;
+  width: 0;
+  overflow: hidden;
+  font-style: normal;
+  font-size: .875rem;
+  white-space: nowrap;
+  transition: width var(--transition), padding-right var(--transition);
+}
+
+.switcher:hover i {
+  width: 100%;
+  padding: 0 calc(var(--spacing) / 2) 0 calc(var(--spacing) / 4);
+}
+
+.switcher::after {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 0.15rem solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(to right, currentColor 0, currentColor 50%, transparent 50%);
+  content: "";
+  vertical-align: bottom;
+  transition: transform var(--transition);
+}
+
+.switcher:hover::after {
+  transform: rotate(180deg);
+}
